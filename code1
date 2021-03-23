@@ -1,0 +1,50 @@
+desc formatted custom11;
+
+select * from custom2;
+
+msck repair table custome1;
+
+set request.pool=root.bdh;
+
+select count(distinct(city)) from custom2;
+
+set hive.exec.dynamic.partition=true;
+set hive.exec.dynamic.partition.mode=nonstrict;
+set hive.exec.max.dynamic.partitions=2500;
+set hive.exec.max.dynamic.partitions.pernode=2500;
+set hive.enforce.bucketing = true;
+insert into table custom1 partition(city) 
+select 
+customer_id,
+account_num	,
+fname,
+mi,
+address1,
+address2,
+address3,
+address4,
+state_province,
+postal_code,
+country	varcha,
+customer_region_id,
+phone1,
+phone2,
+birthdate,
+marital_status,
+yearly_income,
+gender,
+total_children,
+num_children_at_home,
+education,
+date_accnt_opened,
+member_card,
+occupation,
+houseowner,
+num_cars_owned,
+fullname,
+city
+from custom2;
+
+
+
+
